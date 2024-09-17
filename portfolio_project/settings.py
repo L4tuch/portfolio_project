@@ -130,10 +130,5 @@ STATIC_URL = '/static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_HOST = 'smtp.wp.pl'
-EMAIL_PORT = 587  # Używamy TLS
-EMAIL_USE_TLS = True
-EMAIL_HOST_USER = 'jakublatuszektest@wp.pl'  # Zastąp swoim adresem e-mail na WP
-EMAIL_HOST_PASSWORD = 'Testowehaslo123!@#'  # Zastąp swoim
+
 
