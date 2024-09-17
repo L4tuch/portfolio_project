@@ -1,0 +1,45 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Portfolio</title>
+    <link rel="stylesheet" href="{% static 'portfolio/styles.css' %}">
+</head>
+<body>
+
+<header>
+    My Portfolio
+</header>
+
+<main>
+    <nav>
+    <a href="{% url 'project_list' %}" class="nav-button">Home</a>
+    <a href="{% url 'contact' %}" class="nav-button">Contact</a>
+    <a href="/admin/" class="nav-button">Admin</a>
+</nav>
+
+    <h1>My Projects</h1>
+    <ul class="project-list">
+        {% for project in projects %}
+            <li>
+                <h2>{{ project.title }}</h2>
+                <p>{{ project.description }}</p>
+                {% if project.image %}
+                    <img src="{{ project.image.url }}" alt="{{ project.title }}">
+                {% endif %}
+                {% if project.url %}
+                    <a href="{{ project.url }}" target="_blank">This is an example of a link to a specific project</a>
+                {% endif %}
+            </li>
+        {% endfor %}
+    </ul>
+</main>
+
+<footer>
+    &copy; 2024 My Portfolio L4tuch
+</footer>
+
+</body>
+</html>

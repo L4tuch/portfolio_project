@@ -1,0 +1,49 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us</title>
+    <link rel="stylesheet" href="{% static 'portfolio/styles.css' %}">
+</head>
+<body>
+
+<header>
+    <h1>Contact Us</h1>
+</header>
+
+<!-- Pasek nawigacyjny -->
+<nav>
+    <a href="{% url 'project_list' %}" class="nav-button">Home</a>
+    <a href="{% url 'contact' %}" class="nav-button">Contact</a>
+    <a href="/admin/" class="nav-button">Admin</a>
+</nav>
+
+<main>
+    <!-- Wyświetl komunikat, jeśli wiadomość została wysłana -->
+    {% if message_sent %}
+        <p class="success-message">Your message has been sent successfully!</p>
+    {% else %}
+        <form method="post" class="contact-form">
+            {% csrf_token %}
+            <label for="name">Name:</label><br>
+            <input type="text" id="name" name="name" required><br>
+
+            <label for="email">Email:</label><br>
+            <input type="email" id="email" name="email" required><br>
+
+            <label for="message">Message:</label><br>
+            <textarea id="message" name="message" rows="4" required></textarea><br>
+
+            <button type="submit">Send</button>
+        </form>
+    {% endif %}
+</main>
+
+<footer>
+    &copy; 2024 My Portfolio
+</footer>
+
+</body>
+</html>
